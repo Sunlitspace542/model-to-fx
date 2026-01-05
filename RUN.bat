@@ -1,7 +1,7 @@
 :RESTART
 @echo off
 color 0e
-title SUPER FX MODEL HELPER
+title MODEL TO FX
 ::MADE BY EUCLIDIUM
 
 if exist "batches\pythoncheck.bat" call "batches\pythoncheck.bat"
@@ -77,7 +77,7 @@ echo %objname%
 echo TYPE:%type%
 if %type%==3DG1 echo (1) ROUND AND COLOUR
 if %type%==NORMAL echo (1) CONVERT, ROUND AND COLOUR        
-if %type%==3DG1 echo (2) ROUND 3DG1 INTERGERS 
+if %type%==3DG1 echo (2) ROUND 3DG1 INTEGERS 
 if %type%==3DG1 echo (3) COLOUR ONLY
 if not %type%==POV-RAY echo (4) POV-RAY EXPORT (must be default colour and use only tris)
 if %type%==NORMAL echo (5) WAVEFRONT TO VIDEOSCAPE (REGULAR TO 3DG1) (DOESN'T CONVERT WITH COLOUR)
