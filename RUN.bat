@@ -142,8 +142,8 @@ exit
 ::----------------------------
 
 :EVERYTHING
+if %type%==NORMAL call batches\roundeverything.bat
 if %type%==NORMAL call batches\videoscape.bat
-if %type%==NORAML call batches\roundeverything.bat
 if %type%==3DG1 call batches\colourandround.bat
 cls
 goto done
