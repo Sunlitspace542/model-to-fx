@@ -135,8 +135,8 @@ cls
 if exist "C:\Program Files\POV-Ray\v3.7\bin\pvengine64.exe" set PV=3
 :PRR
 if not %PV%==3 goto mainmenu
-"C:\Program Files\POV-Ray\v3.7\bin\pvengine64.exe" /RENDER "%cd%\old tools\SCENE.pov" "%cd%\old tools\INI.ini" /EXIT
-cd "old tools"
+"C:\Program Files\POV-Ray\v3.7\bin\pvengine64.exe" /RENDER "%cd%\povray\SCENE.pov" "%cd%\povray\INI.ini" /EXIT
+cd "povray"
 start OUTPUT.png
 exit
 ::----------------------------
