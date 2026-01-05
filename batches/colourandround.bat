@@ -16,6 +16,7 @@ rename "%objname%" readytoconvert.txt
 move /Y readytoconvert.txt snakes
 cd snakes
 roundnumbers.py
+removezeros.py
 roundcolours.py
 move /Y readytoconvert.txt ..
 cd ..
