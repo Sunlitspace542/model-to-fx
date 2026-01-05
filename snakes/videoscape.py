@@ -3,6 +3,7 @@ import sys
 import fileinput
 import fnmatch
 
+#-----------------------STEP 1: GETTING INFO ABOUT THE FILE---------------------
 
 lines = []
 with open('readytoconvert.txt') as f:
@@ -22,12 +23,6 @@ for line in lines:
         IFEDGE = 1
 print (IFEDGE)
 print (IFFACE)
-#if IFFACE == 1:
-#    print ("hehe")
-
-#os.system("pause")
-#os.system("cls")
-
 
 count = 0
 VERTSL = []
@@ -42,7 +37,6 @@ for line in lines:
 
 print ("on lines",VERTSL)
 
-
 count = 0
 
 if IFFACE == 1:
@@ -56,9 +50,7 @@ if IFFACE == 1:
             print(NORM)
             FACESL.extend ([count])
 
-
-
-count = 0    
+count = 0
 
 if IFEDGE == 1:
     EDGESL = []
@@ -70,58 +62,37 @@ if IFEDGE == 1:
             print(NORM)
             EDGESL.extend ([count])
 
-
-
-
 if IFFACE == 1:
     print (FACESL[0], "and", FACESL[-1])
 if IFEDGE == 1:
     print (EDGESL[0], "and", EDGESL[-1])
 
-#os.system("pause")
-
-
-
-#-------------------------------------------ABOVE IS GETTING INFO ABOUT THE FILE
-#-------------------------------------------BELOW IS MAKING THE FILE
+#-----------------------STEP 2: MAKING THE FILE---------------------
 
 os.system("if exist 3DG1.txt del 3DG1.txt")
 
-
 videoscape = open("3DG1.txt", "w")
-videoscape.write("3DG1 \n")
 
-vertamount = VERTSL[-1]-VERTSL[0]+2
+#Write 3DG1 magic
+videoscape.write("3DG1\n")
 
+vertamount = VERTSL[-1]-VERTSL[0]+1
 
+#Number of points
 videoscape.write(str(vertamount))
 videoscape.write("\n")
-videoscape.write("0.00000 0.000000 0.000000")
-videoscape.write("\n")
 
-
+#Write points
 count = 0
 for line in lines:
     count += 1
     NORM = f"{line}"
-    #print(NORM)
     if NORM.replace("v ", "") == NORM[2:]:
         NORM = NORM[2:]
         print(NORM)
         videoscape.write(NORM)
-        
-        
 
-
-
-
-#os.system("cls")
-#print (IFFACE)
-#print (IFEDGE)
-#os.system("pause")
-
-#IFFACE = 1
-
+#Parse and write faces/lines
 if IFFACE == 1:
     OVERALLRANGE=1000
     
@@ -132,10 +103,8 @@ if IFFACE == 1:
     for countA in range(OVERALLRANGE):
         countA +=1
         
-        
         BAK = int(OVERALLRANGE-countA)
         #print(BAK)
-        
         
         REP ="/" + str(BAK)
         REP2 ="//" + str(BAK)
@@ -151,14 +120,8 @@ if IFFACE == 1:
             TEMP = TEMP.replace(REP, "")
             
             lines[count] = TEMP
-    
-    
-    #print (REP)
-
     print (lines)
     
-    
-
     COLL = 0
     EDGECOLL = 0
     count = 0  
@@ -183,8 +146,8 @@ if IFFACE == 1:
             count2 += 1
             
             if count2 == 4:
-                videoscape.write("\n")
                 #this makes things work, i don't know why
+                pass
             
             readytoprint = f"{line}"
             
@@ -209,39 +172,32 @@ if IFFACE == 1:
                 print ("USE FX1 FX2 FX3 etc")
                 os.system("pause")
             
-            
-            
             else:
             
                 readytoprint = readytoprint[2:]
-                #readytoprint = readytoprint.replace("1/*/*","")
-                #readytoprint = readytoprint.replace(dummy,"E")
                 FACEAM = readytoprint.count(' ')
                 FACEAM = FACEAM+1
-            
-                #ADD COLOUR STUFF HERE
-            
-    
-                #FINAL
-            
-                #countA=0
-                #countB=0
-                #for countA in range(int(OVERALLRANGE)):
-                #    countA += 1
-                #    print (countA)
-    
-                #print (FACEAM)
                 readytoprint = readytoprint.replace("\n","")
-                print (FACEAM, readytoprint)
-                #os.system("pause")
-                #str(readytoprint[:-1])
-                videoscape.write(str(FACEAM) + " " + str(readytoprint) + " " + str(COLL) + "\n")
+                # decrease leading vertex indices by 1
+                parts = readytoprint.split()
+                new_parts = []
+                for tok in parts:
+                    sub = tok.split('/')
+                    if len(sub) > 0:
+                        try:
+                            sub0 = int(sub[0]) - 1
+                            sub[0] = str(sub0)
+                        except Exception:
+                            pass
+                    new_parts.append('/'.join(sub))
+                new_ready = ' '.join(new_parts)
+                print(FACEAM, new_ready)
+                videoscape.write(str(FACEAM) + " " + new_ready + " " + str(COLL))
             
             #videoscape.write("\n")
 
 #os.system("cls")
 print(IFEDGE)
-
 
 
 if IFEDGE == 1:        
@@ -254,12 +210,20 @@ if IFEDGE == 1:
         #os.system("pause")
         
         if NORM.replace("l ", "") == NORM[2:]:
-            NORM = NORM[2:]
-            NORM = "2 " + NORM[:-1] + " " + str(EDGECOLL) + "\n"
+            # decrease leading vertex indices by 1
+            content = NORM[2:].strip()
+            toks = content.split()
+            new_toks = []
+            for t in toks:
+                try:
+                    new_toks.append(str(int(t) - 1))
+                except Exception:
+                    new_toks.append(t)
+            NORM = "2 " + " ".join(new_toks) + " " + str(EDGECOLL)
             print(NORM)
             videoscape.write(NORM)
-                
 
-
+#write EOF marker
+videoscape.write("\x1a")
 videoscape.close()
 #os.system("pause")
