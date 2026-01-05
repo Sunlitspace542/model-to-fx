@@ -72,7 +72,7 @@ if not "%type:~0,4%"=="3DG1" set type=NORMAL
 
 :mainmenu
 cls
-echo Model to FX v2.0a
+echo Model to FX v2.0b
 echo %objname%
 echo TYPE:%type%
 if %type%==3DG1 echo (1) ROUND AND COLOUR
