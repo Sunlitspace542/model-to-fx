@@ -14,7 +14,7 @@ This will colour all the stray edges to the colour you choose.
 Use the provided hex colours in "COLOURS.txt" that correspond to the colours in the Star Fox id_0_c palette.  
 
 ## ROUND NUMBERS
-The "BLENDER round numbers.py" can be openned in Blender's scripting tab.  
+The "BLENDER round numbers.py" can be opened in Blender's scripting tab.  
 Just edit the 'meshname' part to your meshes name and click the play button.  
   
 However, this isn't spot on. Once you get the 3DG1 OBJ from Blender 2.4, put the file in this folder and  
