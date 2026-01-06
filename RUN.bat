@@ -155,8 +155,8 @@ goto done
 
 :HELP
 cls
-::echo read README.txt
-type README.txt
+::echo read README.md
+type README.md
 echo.
 pause
 goto mainmenu

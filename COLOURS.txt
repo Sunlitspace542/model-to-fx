@@ -4,7 +4,7 @@ COLOUR PALETTE FOR ID_0_C
 |FE FOR EDGES|
 |============|
 VVVVV BRIGHTNESS CHANGE WHEN MOVING [DIFFUSE] VVVVV
-0  = FX0  = #E7E7E7 = Solid Dark Grey               
+0  = FX0  = #E7E7E7 = Solid Dark Grey
 1  = FX1  = #AAAAAA = Solid Darker Grey
 2  = FX2  = #BA392A = Shaded Bright Red/Dark Red
 3  = FX3  = #5144D4 = Shaded Blue/Bright Blue
@@ -15,7 +15,7 @@ VVVVV BRIGHTNESS CHANGE WHEN MOVING [DIFFUSE] VVVVV
 8  = FX8  = #7C11A3 = Shaded Red/blue (Purple)
 9  = FX9  = #2F9E28 = Shaded Green/Dark Green
 VVVVV NO BRIGHTNESS CHANGE WHEN MOVING [EMISSION] VVVVV
-10 = FX10 = #192419 = Solid Black                                    	
+10 = FX10 = #192419 = Solid Black
 11 = FX11 = #223022 = Shaded Black/Dark Grey
 12 = FX12 = #334933 = Solid Dark Grey
 13 = FX13 = #415D41 = Shaded Dark Grey/Darker Grey
